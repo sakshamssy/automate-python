@@ -14,9 +14,15 @@ def get_driver():
     driver.get("https://www.timeanddate.com/weather/india/hyderabad/ext")
     return driver
 
+def clean_text(text):
+    output = float((text.split(" ")[1]))
+    #print(output)
+    return output
 def main():
     driver = get_driver()
     element = driver.find_element(by="xpath",value ="/html/body/div[5]/main/article/div[1]/div")
-    return element.text
+    return clean_text(element.text)
+
+
 
 print(main())
